@@ -9,6 +9,6 @@ namespace SmartApartmentData.WebAPI.Models
     {
         public string Query { get; set; }
         public string Markets { get; set; }
-        public int Limit { get; set; }
+        public int Limit { get; set; } = 25;
     }
 }
