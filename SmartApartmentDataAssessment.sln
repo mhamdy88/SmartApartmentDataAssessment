@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FD4A1F35
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sources", "sources", "{B2F33ECA-23F0-4540-BC5C-78341ADBA3F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartApartmentData.Framework.UnitTest", "SmartApartmentData.UnitTest\SmartApartmentData.Framework.UnitTest.csproj", "{C3D07365-56D8-4F89-83BD-E4F71E822CF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,9 +45,20 @@ Global
 		{1C7FBE78-3395-47ED-99A3-5639B26294E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C7FBE78-3395-47ED-99A3-5639B26294E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C7FBE78-3395-47ED-99A3-5639B26294E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3D07365-56D8-4F89-83BD-E4F71E822CF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3D07365-56D8-4F89-83BD-E4F71E822CF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3D07365-56D8-4F89-83BD-E4F71E822CF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3D07365-56D8-4F89-83BD-E4F71E822CF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{81AF56D2-F4ED-4F78-B645-F69A1872BBFA} = {B2F33ECA-23F0-4540-BC5C-78341ADBA3F6}
+		{6856CEEE-CBDE-4BCE-BFF2-A2A2EA15232D} = {B2F33ECA-23F0-4540-BC5C-78341ADBA3F6}
+		{F28ED450-D570-4645-87E3-2F89A6B79EFA} = {B2F33ECA-23F0-4540-BC5C-78341ADBA3F6}
+		{1C7FBE78-3395-47ED-99A3-5639B26294E1} = {B2F33ECA-23F0-4540-BC5C-78341ADBA3F6}
+		{C3D07365-56D8-4F89-83BD-E4F71E822CF9} = {FD4A1F35-1C69-4988-A4E6-05F79408F104}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BB47EDD-B1DF-4C0A-88F9-8205CFB83048}

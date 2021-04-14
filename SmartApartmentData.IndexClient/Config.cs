@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using SmartApartmentData.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace SmartApartmentData.IndexClient
 {
-    static class Config
+    static class _Config
     {
         public static ElasticSearchSettings GetElasticSearchConfigs()
         {
@@ -22,11 +23,5 @@ namespace SmartApartmentData.IndexClient
             return settings;
         }
     }
-    public class ElasticSearchSettings
-    {
-        public string URL { get; set; }
-        public string Username { get; set; }
-        public string PWD { get; set; }
-    }
-
+    
 }

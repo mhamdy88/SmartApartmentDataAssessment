@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Nest;
 using Newtonsoft.Json;
+using SmartApartmentData.Framework;
 using SmartApartmentData.Framework.ElasticSearch.Documents;
 using SmartApartmentData.Framework.Services;
 using System;
