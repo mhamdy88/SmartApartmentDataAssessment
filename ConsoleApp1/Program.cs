@@ -25,7 +25,16 @@ namespace ConsoleApp1
                  .Analyzer("snowball")
                )));
 
+            var boolQuery = new BoolQuery();
+            boolQuery.Must = new QueryContainer[] { new MultiMatchQuery { Query = "stones into rocks", Fields = "*" } };
+            boolQuery.Filter = new QueryContainer[] { new MatchQuery { Field = "market", Query = "Wichita Falls, Houston" } };
+            var yy = client.Search<object>(s => s.Index("smartapartmentdata").Size(600).Query(_ => boolQuery));
 
+
+            var yyy = client.Search<object>(s => s.Index("smartapartmentdata").Size(600).Query(q => q.Bool(b => b
+                 .Must(m => m.MultiMatch(mm => mm.Query("stones into rocks").Fields("*")))
+                 .Filter(f => f.Match(m => m.Field("market").Query("Wichita Falls , Houston")))
+               )));
 
 
 
@@ -60,7 +69,7 @@ namespace ConsoleApp1
             var response = client.IndexMany<Property>(propertiesJsonObject, "properties");
             response = client.IndexMany<PropertyManagement>(propertyManagementJsonObject, "propertymanagement");
 
-            
+
 
             Console.WriteLine("Hello World!");
             Console.ReadLine();

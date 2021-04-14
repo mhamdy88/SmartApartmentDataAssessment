@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-left">
+    <h1 class="display">Welcome</h1>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            <h1>Markets</h1>
+            <input type="checkbox" id="checkbox1" name="checkbox1" value="San Francisco">
+            <label for="checkbox1"> San Francisco</label><br>
+            <input type="checkbox" id="checkbox2" name="checkbox2" value="Los Angeles">
+            <label for="checkbox2"> Los Angeles</label><br>
+            <input type="checkbox" id="checkbox3" name="checkbox3" value="Orange County">
+            <label for="checkbox3"> Orange County</label><br>
+            <input type="checkbox" id="checkbox4" name="checkbox4" value="Sacramento">
+            <label for="checkbox4"> Sacramento</label><br>
+            <input type="checkbox" id="checkbox5" name="checkbox5" value="Inland Empire">
+            <label for="checkbox5">Inland Empire</label><br>
+            <input type="checkbox" id="checkbox6" name="checkbox6" value="San Diego">
+            <label for="checkbox6"> San Diego</label><br>
+            <input type="checkbox" id="checkbox7" name="checkbox7" value="Atlanta">
+            <label for="checkbox7"> Atlanta</label><br>
+            <input type="checkbox" id="checkbox8" name="checkbox8" value="Wichita Falls">
+            <label for="checkbox8"> Wichita Falls</label><br>
+        </div>
+        <div class="col-md-10">
+            <div class="ui-widget">
+                <label for="txtSearch">Search: </label>
+                <input id="txtSearch" style="width:75%">
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(function () {
+        var query = $("#txtSearch").val();
+        var markets = "";
+        $("#txtSearch").autocomplete({
+            source: function (request, response) {
+                    markets = $('input:checkbox:checked').map(function () {
+                        return $(this).val();
+                    }).get().join(',');
+
+                    $.getJSON("@Url.Action("Search")", {
+                        query: $("#txtSearch").val(),
+                        markets: markets
+                    }, function (data, status, xhr) {
+                    response(data);
+                });
+            },
+            data: {
+                query: $("#txtSearch").val(),
+                markets: markets
+            },
+          minLength: 2,
+          select: function (event, ui) {
+              console.log("Selected: " + ui.item.value + " aka " + ui.item.id);
+          }
+        }).autocomplete("instance")._renderItem = function (ul, item) {
+            var image = "";
+            var type = "";
+            if (item.type == "properties")
+            {
+                image = "<img src='/images/property.png' width=50px/>";
+                type = "Apartment Community";
+            }
+            else
+            {
+                image = "<img src='/images/management.jpg' width=50px />";
+                type = "Management Company";
+            };
+          return $("<li>")
+              .append("<div>"
+                  + image +
+                  "<b>" + item.text + "</b>" +
+                  " - " +
+                  type +
+                  "</div>")
+              .appendTo(ul);
+      };
+  } );
+</script>
