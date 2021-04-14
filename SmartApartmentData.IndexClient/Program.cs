@@ -1,4 +1,5 @@
-﻿using Nest;
+﻿using Microsoft.Extensions.Configuration;
+using Nest;
 using Newtonsoft.Json;
 using SmartApartmentData.Framework.ElasticSearch.Documents;
 using SmartApartmentData.Framework.Services;
@@ -13,13 +14,13 @@ namespace SmartApartmentData.IndexClient
     {
         static void Main(string[] args)
         {
-
             Console.Write("Do you want to start uploading process? [Yes/No]");
             if (Console.ReadLine().ToLower() == "yes")
             {
-                var setting = new ConnectionSettings(new Uri("https://search-smartapartmentdata-es-rzusl4jxwe7r7qzc52gitna53i.us-east-2.es.amazonaws.com/"));
-                setting.BasicAuthentication("mhamdy", "Admin@123");
-                var indexService = new IndexService(new ElasticClient(setting));
+                var settings = Config.GetElasticSearchConfigs();
+                var connectionsetting = new ConnectionSettings(new Uri(settings.URL));
+                connectionsetting.BasicAuthentication(settings.Username, settings.PWD);
+                var indexService = new IndexService(new ElasticClient(connectionsetting));
 
                 Console.Write("Cleaning up old indexes if any... ");
                 indexService.CleanUpIndex(new string[] { "properties", "propertymanagement" });
