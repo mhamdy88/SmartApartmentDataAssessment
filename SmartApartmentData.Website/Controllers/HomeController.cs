@@ -39,7 +39,6 @@ namespace SmartApartmentData.Website.Controllers
                 Limit = 5
             });
             var responseContent = response.Result.Content.ReadAsStringAsync().Result;
-
             var searchResult = JsonConvert.DeserializeObject<SearchResponseModel>(responseContent);
             var model = searchResult.ToSearchResultItemViewModel();
 
